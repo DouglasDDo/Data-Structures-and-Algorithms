@@ -18,11 +18,22 @@ const quicksortRand_1 = (arr) => {
   return quicksortRand_1(left).concat([arr[pivot]], quicksortRand_1(right));
 };
 
+// comparators
+const spaceship = (a, b) => {
+  if (a < b){
+    return -1;
+  } else if (a == b) {
+    return 0;
+  } else {
+    return 1;
+  }
+};
+
 // Will sort an array according to comparator passed in, else least to greatest, left to right
 const quicksortRand_2 = (arr, comparator) => {
   if (arr.length < 2) return arr;
 
   if (typeof comparator !== 'function') {
-    
+
   }
 };
