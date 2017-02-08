@@ -31,6 +31,9 @@ def binary_search(arr, target)
       min_idx = mid_idx + 1
     end
   end
+
+  # Explicitly return nil if target is not in arr
+  nil
 end
 
 # Time Complexity: O(log2(N))
