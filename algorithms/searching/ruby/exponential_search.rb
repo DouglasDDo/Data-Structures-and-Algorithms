@@ -40,4 +40,6 @@ def binary_search(arr, target, min_idx, max_idx)
       min_idx = mid_idx + 1
     end
   end
+
+  nil
 end
