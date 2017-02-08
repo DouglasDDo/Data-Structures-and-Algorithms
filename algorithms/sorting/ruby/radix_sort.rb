@@ -35,7 +35,6 @@ def radix_sort(arr, base = 10, comparator = Proc.new {|a,b| a < b})
 
       # Push the element into the buckets array at the determined index
       buckets[bucket_index] << el
-      p buckets
     end
 
     # The buckets array will be a collection of arrays, some empty. Flatten the whole
