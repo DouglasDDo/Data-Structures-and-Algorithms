@@ -26,24 +26,21 @@ def prime_decomp(n)
   }
 
   # Start out by explicitly calling extract using 2 and 3 since there is no
-  # real pattern until you hit 5
+  # real pattern until after 3
   extract[2]
   extract[3]
 
-  # Set a var equal to 5 so that you can use the +2, +4 pattern for finding primes
-  m = 5
-
-  # The pattern for finding primes after 5 is adding 2 then adding 4, continuously
-  # until you get to the prime you're after.
-  # This loop will extract the prime m for as many times as it needs to, then
-  # update m by adding 2, then extract m again, then update again by adding 4 and so on.
-  # As long as m^2 is less than or equal to n,
-  while m * m <= n
-    p "in"
+  # The formula for finding consecutive primes after 3 is 6x - 1 and 6x - 2 for
+  # integers 1 and greater.
+  # This loop checks the primes and alters n until n is either 1 or 0, at which
+  # point the loop breaks.
+  x = 1
+  while n > 1
+    m = 6 * x - 1
     extract[m]
-    m += 2
+    m = 6 * x + 1
     extract[m]
-    m += 4
+    x += 1
   end
 
   # This line is for grabbing either primes for when the loop doesn't run at all
@@ -53,6 +50,4 @@ def prime_decomp(n)
   result
 end
 
-p prime_decomp 125
-p prime_decomp 55902
-p prime_decomp 759
+p prime_decomp 5590210
