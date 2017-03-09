@@ -35,6 +35,7 @@ def prime_decomp(n)
   # This loop checks the primes and alters n until n is either 1 or 0, at which
   # point the loop breaks.
   x = 1
+  
   while n > 1
     m = 6 * x - 1
     extract[m]
@@ -43,9 +44,6 @@ def prime_decomp(n)
     x += 1
   end
 
-  # This line is for grabbing either primes for when the loop doesn't run at all
-  # or for larger primes that remain after extracting all other prime factors
-  result << n if n > 1
   # Return the result
   result
 end
