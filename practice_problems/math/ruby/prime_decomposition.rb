@@ -31,11 +31,13 @@ def prime_decomp(n)
   extract[3]
 
   # The formula for finding consecutive primes after 3 is 6x - 1 and 6x - 2 for
-  # integers 1 and greater.
+  # integers x == 1 and greater. The numbers generated with this formula won't
+  # all be primes but those that aren't will have their factors extracted before
+  # these non-primes are reached.
   # This loop checks the primes and alters n until n is either 1 or 0, at which
   # point the loop breaks.
   x = 1
-  
+
   while n > 1
     m = 6 * x - 1
     extract[m]
