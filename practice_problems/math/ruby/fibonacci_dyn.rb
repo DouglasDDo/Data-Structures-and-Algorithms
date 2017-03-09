@@ -8,8 +8,8 @@ def fib_dyn(n)
   # Set the first two fib values
   result[1] = result[2] = 1
 
-  # Fill out the memo with numbers from 3 to n
-  (3..n).each do |i|
+  # Fill out the memo with numbers from 3 to n - 1
+  (3 ... n).each do |i|
     # For each index, the value will be the sum of the previous two
     result[i] = result[i - 1] + result[i - 2]
   end
