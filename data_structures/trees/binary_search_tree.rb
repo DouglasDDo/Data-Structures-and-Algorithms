@@ -14,19 +14,38 @@ module BinarySearchTree
     end
 
     def add_child(node)
-      @left = node
+      if @left.nil?
+        @left = node
+        @left.parent = self
+      elsif @right.nil?
+        @right = node
+        @right.parent = self
+      else
+        raise "This node already has two children."
+      end
     end
 
     protected
 
-    def parent=(parent_node)
+    def root?
+      @parent.nil?
+    end
 
+    def parent=(parent_node)
+      @parent = parent_node
     end
   end
 
   # Create a tree of nodes given an array that represents a binary tree
   def array_to_nodes(arr)
+    root = nil
+    return root if arr.nil? || arr.empty?
 
+    arr.each do |node_value|
+      
+    end
+
+    root
   end
 
   # Create an array representation of a binary tree from a given node
@@ -45,4 +64,11 @@ module BinarySearchTree
 end
 
 foo = BinarySearchTree::Node.new(value: 1)
-foo.add_child(1)
+bar = BinarySearchTree::Node.new(value: 2)
+baz = BinarySearchTree::Node.new(value: 3)
+
+# foo.add_child(bar)
+# foo.add_child(baz)
+# p foo.children[0]
+# foo.add_child(1)
+p BinarySearchTree::array_to_nodes [1]
