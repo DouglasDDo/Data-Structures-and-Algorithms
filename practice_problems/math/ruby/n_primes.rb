@@ -20,7 +20,8 @@ def n_primes(n)
   until result.size == n
     # After 3, 6x - 1 and 6x + 1 will produce mostly primes for x >= 1.
     # The lambda fn will ignore any non-primes that slip through like when x = 4.
-    # For 6n + 1, an extra check condition exists in case n is odd
+    # For 6x + 1, an extra check condition exists in case 6x - 1 increases result
+    # size to n.
     result << (6 * i - 1) unless counted[(6 * i - 1)]
     result << (6 * i + 1) unless result.size == n || counted[(6 * i + 1)]
     i += 1
