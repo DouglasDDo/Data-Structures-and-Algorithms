@@ -30,7 +30,7 @@ def counting_sort(arr, comparator = Proc.new {|a,b| a < b})
     # Grab the count for each i (numbers betwen min and max)
     single_count = num_counts[i - min_num]
     # There might be nil values (i not found in arr) so skip them if they show up
-    next if single_count.nil?
+    next if single_count.nil? || single_count == 0
 
     if comparator.yield(1,2)
       # Replace the range of the arr between the current index and its sum
