@@ -11,13 +11,12 @@ def caesar_cypher(str, n)
   result = str.chars.map { |char|
     # Check to see if the char is a letter or not by seeing if it's included in
     # one of the letter arrays.
-    # If the char is a letter, find its ASCII code, add the shift factor in,
-    # and then mod it by z's or Z's ASCII code. Finally, convert the shifted
-    # ASCII code back into a letter using #chr()
     if lowers.include?(char)
-      (char.ord + n) > "z".ord ? ((char.ord + n) % "z".ord + "a".ord - 1).chr : (char.ord + n).chr
+      new_idx = (lowers.index(char) + n) % 26
+      lowers[new_idx]
     elsif uppers.include?(char)
-      (char.ord + n) > "Z".ord ? ((char.ord + n) % "Z".ord + "A".ord - 1).chr : (char.ord + n).chr
+      new_idx = (uppers.index(char) + n) % 26
+      uppers[new_idx]
     else
     # If the char is not a letter char, leave it alone but add it to the result
       char
