@@ -2,7 +2,7 @@
 'esversion: 6';
 
 // Will sort an array from least to greatest, left to right
-const quicksortRand_1 = (arr) => {
+const quicksortRand = (arr) => {
   if (arr.length < 2) return arr;
 
   let pivot = Math.floor(Math.random() * arr.length),
@@ -15,25 +15,29 @@ const quicksortRand_1 = (arr) => {
     (n < arr[pivot]) ? left.push(n) : right.push(n)
   }
 
-  return quicksortRand_1(left).concat([arr[pivot]], quicksortRand_1(right));
+  return quicksortRand(left).concat([arr[pivot]], quicksortRand(right));
 };
 
 // comparators
-const spaceship = (a, b) => {
-  if (a < b){
-    return -1;
-  } else if (a == b) {
-    return 0;
-  } else {
-    return 1;
-  }
-};
+const compAsc = (a,b) => a < b;
+const compDesc = (a,b) => !compAsc(a,b);
 
 // Will sort an array according to comparator passed in, else least to greatest, left to right
-const quicksortRand_2 = (arr, comparator) => {
+const quicksortRandComp = (arr, comp = compAsc) => {
   if (arr.length < 2) return arr;
 
-  if (typeof comparator !== 'function') {
+  let pivot = Math.floor(Math.random() * arr.length),
+      left  = [],
+      right = [];
 
+  for (var i = 0; i < arr.length; i++) {
+    if (i === pivot) continue;
+    let n = arr[i];
+    comp(n, arr[pivot]) ? left.push(n) : right.push(n)
   }
+
+  return quicksortRandComp(left, comp).concat([arr[pivot]], quicksortRandComp(right, comp));
 };
+
+let foo = [1,4,6,2,34,6,7,2,31, 28];
+console.log(quicksortRandComp(foo, compDesc));
