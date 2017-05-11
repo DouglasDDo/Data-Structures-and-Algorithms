@@ -22,9 +22,6 @@ def counting_sort(arr, comparator = Proc.new {|a,b| a < b})
     num_counts[el - min_num] += 1
   end
 
-  # Initialize an index var at 0 for least-to-greatest, last idx for opposite
-  current_idx = comparator.yield(1,2) ? 0 : arr.size
-
   result = []
 
   num_counts.each_with_index do |count, i|
